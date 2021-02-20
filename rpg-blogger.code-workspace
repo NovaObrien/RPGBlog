@@ -6,6 +6,10 @@
     },
     {
       "path": "rpg-blogger.server"
+    },
+    {
+      "name": "rpg-blogger",
+      "path": "."
     }
   ],
   "settings": {
