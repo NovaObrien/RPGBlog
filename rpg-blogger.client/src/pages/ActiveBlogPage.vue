@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="active-blog-page container-fluid">
     <div class="row">
       <div class="col-1" id="border">
         <CreateBlog class="mt-5" />
@@ -51,7 +51,7 @@ import CreateBlog from '../components/CreateBlog'
 // import EditBlog from '../components/EditBlog'
 
 export default {
-  name: 'ActiveBlog',
+  name: 'ActiveBlogPage',
   components: { Comment, CreateComment, CreateBlog },
   setup() {
     const route = useRoute()
@@ -77,10 +77,7 @@ export default {
 #post{
   height: 80vh;
 }
-#footer{
-  height: 12vh;
-  background-color: rgb(0, 0, 0);
-}
+
 </style>
 <style scoped>
 </style>

@@ -1,9 +1,11 @@
 <template>
   <div class="home-page container-fluid">
-    <div class="row">
-      <div class="col overflow-auto">
+    <div class="row" id="post">
+      <div class="col-3 mr-3" id="border"></div>
+      <div class="col-4 overflow-auto-y">
         <Blog v-for="blog in blogs" :blog-props="blog" :key="blog.id" />
       </div>
+      <div class="col ml-3" id="border"></div>
     </div>
   </div>
 </template>
@@ -27,5 +29,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+#border{
+  background-color: rgba(73, 32, 40, 0.705);
+}
+#post{
+  height: 81vh;
+}
 </style>

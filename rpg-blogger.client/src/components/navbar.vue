@@ -3,6 +3,9 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
       </div>
+      <div class="text-danger text-shadow" id="logo">
+        <h3>RPG Blogger</h3>
+      </div>
     </router-link>
     <button
       class="navbar-toggler"
@@ -119,5 +122,8 @@ a:hover {
 }
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
+}
+#logo {
+  font-family: "Press Start 2P", cursive;
 }
 </style>
