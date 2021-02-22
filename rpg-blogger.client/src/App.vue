@@ -10,7 +10,7 @@
     </router-view>
   </main>
   <footer>
-    <div class="bg-dark" id="footer">
+    <div id="footer">
       <i class="text-danger fa fa-dice-d20 fa-5x m-3"></i>
       <i class="ra ra-sword ra-5x"></i>
     </div>
@@ -35,5 +35,6 @@ export default {
 
 #footer{
   height: 12vh;
+  background-color: rgb(56, 12, 12);
 }
 </style>

@@ -36,9 +36,10 @@
 </template>
 
 <script>
-import { Vue, computed, reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'Blog',
@@ -59,7 +60,12 @@ export default {
         router.push({ name: 'ActiveBlog', params: { blogId: props.blogProps._id } })
       },
       deleteBlog() {
-        Vue.swal('Hello Vue world!!!')
+        Swal.fire({
+          title: 'Error!',
+          text: 'Do you want to continue',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
       }
     }
   },
