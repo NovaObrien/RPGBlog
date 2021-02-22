@@ -1,33 +1,45 @@
 <template>
   <div class="Blog row p-1 bg-gray my-3 rounded">
-    <div class="col-11">
+    <div class="col">
       <div class="row">
-        <h3 @click="setActiveBlog">
-          {{ blog.title }}
-        </h3>
       </div>
       <div class="row">
-        <h5 class="d-flex justify-content-end bg-gray">
-          User: {{ blog.createdBy }}
+        <h5 @click="setActiveBlog">
+          {{ blog.title }}
         </h5>
       </div>
-    </div>
-    <div class="col mt-5 mr-auto">
+
+      <p class="d-flex justify-content-end bg-red rounded p-2">
+        {{ blog.createdBy }}
+      </p>
       <div class="blog-options row">
         <button class="btn btn-dark text-danger" @click="state.dropOpen = !state.dropOpen">
-          <i class="fas fa-caret-square-down"></i>
+          <i class="fas fa-angle-double-right"></i>
         </button>
         <div
-          class="dropdown-menu p-0 list-group w-100"
+          class="dropdown p-0"
           :class="{ show: state.dropOpen }"
         >
           <!-- <button @click="removeUser">
           Yes
-        </button> -->
-          <button class="btn btn-dark btn-block text-danger" v-if="blog.createdBy == user.name" @click="deleteBlog">
+          </button> -->
+          <button class="btn btn-dark text-danger" v-if="blog.createdBy != user.name" @click="reportBlog">
+            Report
+          </button>
+          <button class="btn btn-dark text-danger" v-if="blog.createdBy == user.name" @click="deleteBlog">
             <i class="fas fa-skull-crossbones">
             </i>
-            Delete
+          </button>
+          <button class="btn btn-dark text-danger" v-if="blog.createdBy == user.name" @click="deleteBlog">
+            <i class="fas fa-skull-crossbones">
+            </i>
+          </button>
+          <button class="btn btn-dark text-danger" v-if="blog.createdBy == user.name" @click="deleteBlog">
+            <i class="fas fa-skull-crossbones">
+            </i>
+          </button>
+          <button class="btn btn-dark text-danger" @click="state.dropOpen = !state.dropOpen">
+            <i class="fas fa-angle-double-left"></i>
           </button>
         </div>
       </div>
@@ -66,6 +78,22 @@ export default {
           icon: 'error',
           confirmButtonText: 'Cool'
         })
+      },
+      async reportBlog() {
+        const { value: text } = await Swal.fire({
+          input: 'textarea',
+          inputLabel: 'To help us better identify the issue please give a short description of the violation. eg hate speech, personal info listed, or not rpg content related',
+          text: 'Report Blog',
+          inputPlaceholder: 'Reason For Report...',
+          inputAttributes: {
+            'aria-label': ''
+          },
+          showCancelButton: true
+        })
+
+        if (text) {
+          Swal.fire('Thank you for keeping our community safe')
+        }
       }
     }
   },
@@ -74,16 +102,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// @media (min-width: 575.98px){
+// .info-card{
+//   width: 45%;
+//   height: fit-content;
+//   position:absolute;
+//   top: 15%;
+//   right: 5%;
+// }
+// }
 .bg-gray{
-  background-color: rgba(128, 128, 128, 0.301);
+  background-color: rgb(214, 214, 214);
 }
-.dropdown-menu {
-  user-select: none;
-  display: block;
-  transform: scale(0);
-  transition: all 0.15s linear;
+.bg-red{
+  background-color: rgba(73, 11, 11, 0.377);
 }
-.dropdown-menu.show {
-  transform: scale(1);
+.dropdown {
+  width: 50vw;
+  position: absolute;
+  transform-origin: left;
+  transform: scaleX(0) ;
+  transition: all 0.15s ease-out;
+
+}
+.dropdown.show {
+  transform-origin: left;
+  transform: scaleX(1);
+  margin-right: 200px;
+  animation-direction: left;
 }
 </style>

@@ -3,9 +3,6 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
       </div>
-      <div class="text-danger text-shadow" id="logo">
-        <h3>RPG Blogger</h3>
-      </div>
     </router-link>
     <button
       class="navbar-toggler"
@@ -20,17 +17,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link :to="{ name: 'About' }" class="nav-link">
-            About
-          </router-link>
-        </li>
-        <create-blog />
       </ul>
       <span class="navbar-text">
         <button

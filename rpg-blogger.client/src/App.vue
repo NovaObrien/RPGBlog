@@ -1,6 +1,10 @@
 <template>
   <header>
-    <Navbar />
+    <div class="text-danger text-shadow d-flex justify-content-center" id="logo">
+      <h3 class="mt-1">
+        RPG Blogger
+      </h3>
+    </div>
   </header>
   <main>
     <router-view v-slot="{Component}">
@@ -10,9 +14,8 @@
     </router-view>
   </main>
   <footer>
-    <div id="footer">
-      <i class="text-danger fa fa-dice-d20 fa-5x m-3"></i>
-      <i class="ra ra-sword ra-5x"></i>
+    <div class="d-flex justify-content-center" id="footer">
+      <radial-menu />
     </div>
   </footer>
 </template>
@@ -20,8 +23,10 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+import RadialMenu from './components/RadialMenu.vue'
 
 export default {
+  components: { RadialMenu },
   name: 'App',
   setup() {
     return {
@@ -36,5 +41,10 @@ export default {
 #footer{
   height: 12vh;
   background-color: rgb(56, 12, 12);
+}
+#logo {
+  font-family: "Press Start 2P", cursive;
+  background-color: rgb(56, 12, 12);
+
 }
 </style>
