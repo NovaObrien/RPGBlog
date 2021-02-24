@@ -2,12 +2,12 @@
   <div class="create-blog">
     <button
       type="button"
-      class="btn btn-dark"
+      class="btn btn-lg rounded-circle"
+      id="btn-2"
       data-toggle="modal"
       data-target="#exampleModalLong"
     >
       <i class="fas fa-scroll"></i>
-      Post
     </button>
 
     <!-- Modal -->
@@ -96,5 +96,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+#btn-2{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  bottom: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+#btn-2:hover{
+  background-color: rgb(73, 65, 65);
+}
 </style>

@@ -26,18 +26,11 @@
           <button class="btn btn-dark text-danger" v-if="blog.createdBy != user.name" @click="reportBlog">
             Report
           </button>
-          <button class="btn btn-dark text-danger" v-if="blog.createdBy == user.name" @click="deleteBlog">
+          <button class="btn btn-dark text-danger" v-if="blog.createdBy == user.name" @click="deleteBlog(blog.id)">
             <i class="fas fa-skull-crossbones">
             </i>
           </button>
-          <button class="btn btn-dark text-danger" v-if="blog.createdBy == user.name" @click="deleteBlog">
-            <i class="fas fa-skull-crossbones">
-            </i>
-          </button>
-          <button class="btn btn-dark text-danger" v-if="blog.createdBy == user.name" @click="deleteBlog">
-            <i class="fas fa-skull-crossbones">
-            </i>
-          </button>
+
           <button class="btn btn-dark text-danger" @click="state.dropOpen = !state.dropOpen">
             <i class="fas fa-angle-double-left"></i>
           </button>
@@ -52,6 +45,7 @@ import { computed, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import Swal from 'sweetalert2'
+import { blogService } from '../services/BlogService'
 
 export default {
   name: 'Blog',
@@ -71,12 +65,33 @@ export default {
       setActiveBlog() {
         router.push({ name: 'ActiveBlog', params: { blogId: props.blogProps._id } })
       },
-      deleteBlog() {
+      deleteBlog(id) {
         Swal.fire({
-          title: 'Error!',
-          text: 'Do you want to continue',
-          icon: 'error',
-          confirmButtonText: 'Cool'
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+            blogService.removeActiveBlog(id)
+          } else if (
+          /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            Swal.fire(
+              'Cancelled',
+              'Your imaginary file is safe :)',
+              'error'
+            )
+          }
         })
       },
       async reportBlog() {

@@ -15,34 +15,113 @@
       class="radial p-0"
       :class="{ show: state.radialOpen }"
     >
-      <button class="btn btn-lg rounded-circle" id="btn-1">
+      <button class="btn btn-lg rounded-circle" id="btn-1" @click="home">
         <i class="fas fa-dice-d20"></i>
       </button>
-      <button class="btn btn-lg rounded-circle" id="btn-2">
+
+      <button class="btn btn-lg rounded-circle"
+              id="btn-2"
+              data-toggle="modal"
+              data-target="#exampleModalLong"
+      >
         <i class="fas fa-scroll"></i>
       </button>
-      <button class="btn btn-lg rounded-circle" id="btn-3">
+
+      <button class="btn btn-lg rounded-circle" id="btn-3" @click="profile">
         <i class="fas fa-dungeon"></i>
       </button>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModalLong"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form class="form-group" @submit.prevent="createBlog">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Create a Post...
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- <label for=""></label> -->
+              <input
+                type="text"
+                class="form-control"
+                name=""
+                id=""
+                aria-describedby="titleId"
+                placeholder="Title..."
+                v-model="state.newBlog.title"
+              />
+              <textarea
+                class="form-control rounded-0 mt-3"
+                rows="15"
+                name=""
+                id=""
+                aria-describedby="Body"
+                placeholder="Content goes here..."
+                v-model="state.newBlog.body"
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary" data-dismiss="modal">
+                Post
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { reactive } from 'vue'
+import router from '../router'
+import { blogService } from '../services/BlogService'
 
 export default {
   name: 'RadialMenu',
   setup() {
     const state = reactive({
-      radialOpen: false
+      radialOpen: false,
+      newBlog: {}
     })
     return {
-      state
-
+      state,
+      home() {
+        router.push({ name: 'Home' })
+      },
+      profile() {
+        router.push({ name: 'Account' })
+      },
+      createBlog() {
+        blogService.createBlogs(state.newBlog)
+      }
     }
-  },
-  components: {}
+  }
 }
 </script>
 

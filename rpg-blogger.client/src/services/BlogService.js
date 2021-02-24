@@ -5,7 +5,13 @@ class BlogService {
   async getBlogs() {
     try {
       const res = await api.get('api/blogs')
-      AppState.blogs = res.data
+      const data = res.data
+      for (let i = 0; i < data.length / 2; i++) {
+        const temp = data[i]
+        data[i] = data[data.length - i - 1]
+        data[data.length - i - 1] = temp
+      }
+      AppState.blogs = data
     } catch (error) {
       logger.error('get blogs failed' + error)
     }
@@ -39,10 +45,10 @@ class BlogService {
     }
   }
 
-  async removeActiveBlog(blog) {
+  async removeActiveBlog(blogId) {
     try {
-      await api.delete('api/blogs/' + blog._id)
-      const index = AppState.blogs.findIndex(b => b._id === blog)
+      await api.delete('api/blogs/' + blogId)
+      const index = AppState.blogs.findIndex(b => b._id === blogId)
       AppState.blogs.splice(index, 1)
     } catch (error) {
       logger.error('Delete failed' + error)
