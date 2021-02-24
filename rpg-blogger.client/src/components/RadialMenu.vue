@@ -35,7 +35,7 @@ export default {
   name: 'RadialMenu',
   setup() {
     const state = reactive({
-      radialOpen: true
+      radialOpen: false
     })
     return {
       state
