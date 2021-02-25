@@ -86,7 +86,7 @@
               >
                 Close
               </button>
-              <button type="submit" class="btn btn-primary" data-dismiss="modal">
+              <button type="submit" class="btn btn-primary">
                 Post
               </button>
             </div>
@@ -101,6 +101,7 @@
 import { reactive } from 'vue'
 import router from '../router'
 import { blogService } from '../services/BlogService'
+import { logger } from '../utils/Logger'
 
 export default {
   name: 'RadialMenu',
@@ -118,6 +119,7 @@ export default {
         router.push({ name: 'Account' })
       },
       createBlog() {
+        logger.log('TEST')
         blogService.createBlogs(state.newBlog)
       }
     }
