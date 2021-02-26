@@ -29,15 +29,15 @@ class BlogService {
   async createBlogs(blogData) {
     try {
       const res = await api.post('api/blogs', blogData)
-      AppState.blogs = [...AppState.blogs, res.data]
+      AppState.blogs.unshift(res.data)
     } catch (error) {
       logger.error('Failed create blog' + error)
     }
   }
 
-  async editActiveBlog(blog) {
+  async editBlog(blog) {
     try {
-      await api.put('api/blogs/' + blog._id)
+      await api.put('api/blogs/' + blog._id, blog)
       const index = AppState.blogs.findIndex(b => b._id === blog._id)
       AppState.blogs.splice(index, 1, blog)
     } catch (error) {

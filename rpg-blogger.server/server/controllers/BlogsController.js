@@ -49,7 +49,7 @@ export class BlogsController extends BaseController {
       const userId = req.userInfo.id
       res.send(await blogsService.editBlogById(req.params.blogId, req.body, userId))
     } catch (error) {
-      logger.error('Failed to Edit Blog')
+      logger.error(error + 'Failed to Edit Blog')
       next(error)
     }
   }

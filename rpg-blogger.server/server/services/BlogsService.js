@@ -26,7 +26,7 @@ class BlogsService {
     }
   }
 
-  async editBlogByID(blogId, reqBody, userId) {
+  async editBlogById(blogId, reqBody, userId) {
     try {
       if (userId !== reqBody.creatorId) {
         throw new BadRequest('UnAuthorized Action')
