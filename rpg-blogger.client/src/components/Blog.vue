@@ -58,7 +58,7 @@
               <form class="form-group" @submit.prevent="editBlog">
                 <div class="modal-header">
                   <h5 class="modal-title" id="editedModalLong">
-                    EditModal
+                    Edit Blog
                   </h5>
                   <button
                     type="button"
@@ -95,10 +95,10 @@
                     class="btn btn-secondary"
                     data-dismiss="modal"
                   >
-                    Close
+                    Cancel
                   </button>
                   <button type="submit" class="btn btn-primary">
-                    Post
+                    Update
                   </button>
                 </div>
               </form>
