@@ -7,8 +7,8 @@ export class BlogsController extends BaseController {
     super('api/blogs')
     this.router
       .get('', this.getAllBlogs)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:blogId', this.getBlogById)
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.postBlog)
       .put('/:blogId', this.editBlogById)
       .delete('/:blogId', this.deleteBlogById)
