@@ -10,6 +10,11 @@ const Comment = new Schema({
     required: true,
     ref: 'Account'
   },
+  createdBy: {
+    type: String,
+    required: true,
+    ref: 'Account'
+  },
   blogId: {
     type: String,
     required: true,

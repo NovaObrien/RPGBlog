@@ -5,7 +5,7 @@ import { api } from './AxiosService'
 class CommentService {
   createComment(data) {
     try {
-      const res = api.post('/comments/', data)
+      const res = api.post('api/comments/', data)
       AppState.comments = res.data
     } catch (error) {
       logger.error('Create Failed' + error)
@@ -14,7 +14,7 @@ class CommentService {
 
   getComments(blogId) {
     try {
-      const res = api.post('/comments/' + blogId)
+      const res = api.post('api/comments/' + blogId)
       AppState.comments = res.data
     } catch (error) {
       logger.error('Create Failed' + error)
@@ -23,7 +23,7 @@ class CommentService {
 
   deleteComment(commentId) {
     try {
-      api.delete('/comments/' + commentId)
+      api.delete('api/comments/' + commentId)
       const index = AppState.comments.findIndex(c => c._id === commentId)
       AppState.comments.splice(index, 1)
     } catch (error) {
@@ -33,7 +33,7 @@ class CommentService {
 
   editComment(data) {
     try {
-      const res = api.post('/comments/', data)
+      const res = api.post('api/comments/', data)
       AppState.comments = res.data
     } catch (error) {
       logger.error('Create Failed' + error)

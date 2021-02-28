@@ -19,7 +19,7 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form class="form-group" @submit.prevent="createBlog">
+          <form class="form-group" @submit.prevent="createComment">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">
                 Reply
@@ -65,11 +65,20 @@
 </template>
 
 <script>
+import { reactive } from 'vue'
+import { commentService } from '../services/CommentService'
 export default {
   name: 'CreateComment',
   setup() {
-    state
-    return {}
+    const state = reactive({
+      newComment: {}
+    })
+    return {
+      state,
+      createComment() {
+        commentService.createComment(state.newComment)
+      }
+    }
   },
   components: {}
 }

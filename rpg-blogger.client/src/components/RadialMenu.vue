@@ -101,6 +101,8 @@
 import { reactive } from 'vue'
 import router from '../router'
 import { blogService } from '../services/BlogService'
+import { AuthService } from '../services/AuthService'
+import { AppState } from '../AppState'
 
 export default {
   name: 'RadialMenu',
@@ -117,8 +119,12 @@ export default {
       profile() {
         router.push({ name: 'Account' })
       },
-      createBlog() {
-        blogService.createBlogs(state.newBlog)
+      async createBlog() {
+        if (AppState.account != null) {
+          await AuthService.loginWithPopup()
+        } else {
+          blogService.createBlogs(state.newBlog)
+        }
       }
     }
   }
@@ -158,7 +164,7 @@ color: rgb(255, 255, 255);
 }
 
 #btn-1:hover{
-  background-color: rgb(73, 65, 65);
+   background-color: rgb(146, 146, 146);
 }
 #btn-2{
   position: absolute;
@@ -170,7 +176,7 @@ color: rgb(255, 255, 255);
   right: 0;
 }
 #btn-2:hover{
-  background-color: rgb(73, 65, 65);
+   background-color: rgb(146, 146, 146);
 }
 #btn-3{
   position: absolute;
@@ -182,6 +188,6 @@ color: rgb(255, 255, 255);
   right: -18vw;
 }
 #btn-3:hover{
-  background-color: rgb(73, 65, 65);
+   background-color: rgb(146, 146, 146);
 }
 </style>

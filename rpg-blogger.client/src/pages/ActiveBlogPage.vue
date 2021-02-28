@@ -13,6 +13,9 @@
         <p>
           {{ activeBlog.content }}
         </p>
+        <div class="row">
+          <create-comment />
+        </div>
       </div>
     </div>
   </div>

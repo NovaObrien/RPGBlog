@@ -4,7 +4,7 @@ import { BadRequest } from '../utils/Errors'
 class CommentsService {
   async getCommentsByBlogId(blogId) {
     try {
-      return await dbContext.Comments.find({ blogId: blogId })
+      return await dbContext.Comment.find({ blogId: blogId })
     } catch (error) {
       throw new BadRequest(error)
     }
@@ -12,7 +12,7 @@ class CommentsService {
 
   async postComment(reqBody) {
     try {
-      return await dbContext.Comments.post(reqBody)
+      return await dbContext.Comment.post(reqBody)
     } catch (error) {
       throw new BadRequest(error)
     }
@@ -32,7 +32,7 @@ class CommentsService {
 
   async deleteComment(commentId) {
     try {
-      return await dbContext.Comments.findByIdAndRemove(commentId)
+      return await dbContext.Comment.findByIdAndRemove(commentId)
     } catch (error) {
       throw new BadRequest(error)
     }
