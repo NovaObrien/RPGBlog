@@ -12,7 +12,7 @@ class CommentsService {
 
   async postComment(reqBody) {
     try {
-      return await dbContext.Comment.post(reqBody)
+      return await dbContext.Comment.create(reqBody)
     } catch (error) {
       throw new BadRequest(error)
     }

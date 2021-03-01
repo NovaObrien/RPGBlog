@@ -67,15 +67,18 @@
 <script>
 import { reactive } from 'vue'
 import { commentService } from '../services/CommentService'
+import { useRoute } from 'vue-router'
 export default {
   name: 'CreateComment',
   setup() {
+    const route = useRoute()
     const state = reactive({
       newComment: {}
     })
     return {
       state,
       createComment() {
+        state.newComment.blogId = route.params.blogId
         commentService.createComment(state.newComment)
       }
     }

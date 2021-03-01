@@ -16,6 +16,7 @@
         <div class="row">
           <create-comment />
         </div>
+        <comment v-for="c in comments" :comment-prop="c" :key="c.id" />
       </div>
     </div>
   </div>
@@ -26,15 +27,18 @@ import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { blogService } from '../services/BlogService'
 import { useRoute } from 'vue-router'
+import { commentService } from '../services/CommentService'
 export default {
   name: 'ActiveBlogPage',
   setup() {
     const route = useRoute()
     onMounted(() => {
       blogService.getActiveBlog(route.params.blogId)
+      commentService.getComments(route.params.blogId)
     })
     return {
-      activeBlog: computed(() => AppState.activeBlog)
+      activeBlog: computed(() => AppState.activeBlog),
+      comments: computed(() => AppState.comments)
     }
   },
   components: {}

@@ -14,8 +14,9 @@ class CommentService {
 
   getComments(blogId) {
     try {
-      const res = api.post('api/comments/' + blogId)
-      AppState.comments = res.data
+      const res = api.get('api/comments/' + blogId)
+      logger.log(res.data)
+      // AppState.comments = res.data
     } catch (error) {
       logger.error('Create Failed' + error)
     }

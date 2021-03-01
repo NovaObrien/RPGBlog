@@ -6,9 +6,9 @@ export class CommentsController extends BaseController {
   constructor() {
     super('api/comments')
     this.router
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:blogId', this.getCommentsByBlogId)
-      .post('', this.postComment)
+      .use(Auth0Provider.getAuthorizedUserInfo)
+      .post('/', this.postComment)
       .put('/:commentId', this.editCommentById)
       .delete('/:commentId', this.deleteCommentById)
   }
@@ -27,7 +27,7 @@ export class CommentsController extends BaseController {
 
   async getCommentsByBlogId(req, res, next) {
     try {
-      res.send(await commentsService.getCommentsByBlogId(req.params.commentId))
+      res.send(await commentsService.getCommentsByBlogId(req.params.blogId))
     } catch (error) {
       logger.error('Failed to get comment by Id')
       next(error)
