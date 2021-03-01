@@ -3,28 +3,27 @@ import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
 class CommentService {
-  createComment(data) {
+  async createComment(data) {
     try {
-      const res = api.post('api/comments/', data)
+      const res = await api.post('api/comments/', data)
+      AppState.comments = [...AppState.comments, res.data]
+    } catch (error) {
+      logger.error('Create Failed' + error)
+    }
+  }
+
+  async getComments(blogId) {
+    try {
+      const res = await api.get('api/comments/' + blogId)
       AppState.comments = res.data
     } catch (error) {
       logger.error('Create Failed' + error)
     }
   }
 
-  getComments(blogId) {
+  async deleteComment(commentId) {
     try {
-      const res = api.get('api/comments/' + blogId)
-      logger.log(res.data)
-      // AppState.comments = res.data
-    } catch (error) {
-      logger.error('Create Failed' + error)
-    }
-  }
-
-  deleteComment(commentId) {
-    try {
-      api.delete('api/comments/' + commentId)
+      await api.delete('api/comments/' + commentId)
       const index = AppState.comments.findIndex(c => c._id === commentId)
       AppState.comments.splice(index, 1)
     } catch (error) {
@@ -32,9 +31,9 @@ class CommentService {
     }
   }
 
-  editComment(data) {
+  async editComment(data) {
     try {
-      const res = api.post('api/comments/', data)
+      const res = await api.post('api/comments/', data)
       AppState.comments = res.data
     } catch (error) {
       logger.error('Create Failed' + error)

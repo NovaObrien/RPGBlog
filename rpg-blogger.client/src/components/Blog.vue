@@ -1,5 +1,5 @@
 <template>
-  <div class="Blog row p-1 bg-gray my-3 rounded">
+  <div class="Blog row p-1 bg-light my-3 rounded">
     <div class="col">
       <div class="row">
       </div>
@@ -9,7 +9,7 @@
         </h5>
       </div>
 
-      <p class="d-flex justify-content-end bg-red rounded p-2">
+      <p class="d-flex justify-content-end bg-secondary rounded p-2">
         {{ blog.createdBy }}
       </p>
       <div class="blog-options row">
@@ -193,9 +193,7 @@ export default {
 .bg-gray{
   background-color: rgb(214, 214, 214);
 }
-.bg-red{
-  background-color: rgba(73, 11, 11, 0.377);
-}
+
 .dropdown {
   width: 50vw;
   position: absolute;

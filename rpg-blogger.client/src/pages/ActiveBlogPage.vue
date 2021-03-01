@@ -1,22 +1,22 @@
 <template>
-  <div class="active-blog-page container-fluid">
+  <div class="active-blog-page container-fluid ">
     <div class="row">
       <div class="col-1">
       </div>
-      <div class="activeBlog col-10 overflow-auto">
+      <div class="activeBlog col-10 overflow-auto bg-light">
         <h3>
           {{ activeBlog.title }}
         </h3>
-        <p class="bg-red p-1 rounded d-flex justify-content-end">
+        <p class="bg-secondary p-1 rounded d-flex justify-content-end">
           {{ activeBlog.createdBy }}
         </p>
         <p>
           {{ activeBlog.content }}
         </p>
+        <comment v-for="c in comments" :comment-prop="c" :key="c.id" />
         <div class="row">
           <create-comment />
         </div>
-        <comment v-for="c in comments" :comment-prop="c" :key="c.id" />
       </div>
     </div>
   </div>
@@ -48,9 +48,5 @@ export default {
 <style lang="scss" scoped>
 .activeBlog{
   height: 82vh;
-  background-color: rgb(214, 214, 214);
-}
-.bg-red{
-  background-color: rgba(73, 11, 11, 0.377);
 }
 </style>
