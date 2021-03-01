@@ -11,27 +11,25 @@
     <!-- Modal -->
     <div>
       <form class="form-group" @submit.prevent="createComment">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            Reply
-          </h5>
-        </div>
-        <div class="modal-body">
-          <!-- <label for=""></label> -->
-          <textarea
-            class="form-control rounded-0 mt-3"
-            rows="10"
-            name=""
-            id=""
-            aria-describedby="Body"
-            placeholder="Comment..."
-            v-model="state.newComment.content"
-          />
-          <button type="submit" class="btn btn-secondary">
-            Post
-          </button>
-        </div>
-        <div class="modal-footer">
+        <div class="col">
+          <div class="row d-flex justify-content-center">
+            <h5 class="mt-3 text-warning">
+              Reply
+            </h5>
+            <!-- <label for=""></label> -->
+            <textarea
+              class="form-control rounded pl-3 pr-5"
+              rows="10"
+              name=""
+              id=""
+              aria-describedby="Body"
+              placeholder="Comment..."
+              v-model="state.newComment.content"
+            />
+            <button type="submit" class="btn btn-light mt-3">
+              Post Comment
+            </button>
+          </div>
         </div>
       </form>
     </div>

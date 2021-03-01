@@ -156,6 +156,7 @@ color: rgb(255, 255, 255);
 #btn-1{
   position: absolute;
   background-color: rgb(255, 255, 255);
+  border-color: rgb(170, 24, 24);
   bottom: 6vh;
   margin-left: auto;
   margin-right: auto;
@@ -165,10 +166,14 @@ color: rgb(255, 255, 255);
 
 #btn-1:hover{
    background-color: rgb(146, 146, 146);
+  border-color: rgb(170, 24, 24);
+
 }
 #btn-2{
   position: absolute;
   background-color: rgb(255, 255, 255);
+  border-color: rgb(170, 24, 24);
+
   bottom: 10vh;
   margin-left: auto;
   margin-right: auto;
@@ -177,10 +182,14 @@ color: rgb(255, 255, 255);
 }
 #btn-2:hover{
    background-color: rgb(146, 146, 146);
+  border-color: rgb(170, 24, 24);
+
 }
 #btn-3{
   position: absolute;
   background-color: rgb(255, 255, 255);
+  border-color: rgb(170, 24, 24);
+
   bottom: 6vh;
   margin-left: auto;
   margin-right: auto;
@@ -189,5 +198,7 @@ color: rgb(255, 255, 255);
 }
 #btn-3:hover{
    background-color: rgb(146, 146, 146);
+  border-color: rgb(170, 24, 24);
+
 }
 </style>
