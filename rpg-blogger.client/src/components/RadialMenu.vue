@@ -75,7 +75,7 @@
                 id=""
                 aria-describedby="Body"
                 placeholder="Content goes here..."
-                v-model="state.newBlog.body"
+                v-model="state.newBlog.content"
               />
             </div>
             <div class="modal-footer">
@@ -86,7 +86,7 @@
               >
                 Close
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-danger">
                 Post
               </button>
             </div>
@@ -120,10 +120,10 @@ export default {
         router.push({ name: 'Account' })
       },
       async createBlog() {
-        if (AppState.account != null) {
-          await AuthService.loginWithPopup()
-        } else {
+        if (AppState.account.id != null) {
           blogService.createBlogs(state.newBlog)
+        } else {
+          await AuthService.loginWithPopup()
         }
       }
     }

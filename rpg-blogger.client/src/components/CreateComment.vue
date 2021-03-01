@@ -40,6 +40,8 @@
 import { reactive } from 'vue'
 import { commentService } from '../services/CommentService'
 import { useRoute } from 'vue-router'
+import { AppState } from '../AppState'
+import { AuthService } from '../services/AuthService'
 export default {
   name: 'CreateComment',
   setup() {
@@ -49,10 +51,14 @@ export default {
     })
     return {
       state,
-      createComment() {
-        state.newComment.blogId = route.params.blogId
-        commentService.createComment(state.newComment)
-        state.newComment = {}
+      async createComment() {
+        if (AppState.account.id != null) {
+          state.newComment.blogId = route.params.blogId
+          commentService.createComment(state.newComment)
+          state.newComment = {}
+        } else {
+          await AuthService.loginWithPopup()
+        }
       }
     }
   },

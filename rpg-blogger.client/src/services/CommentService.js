@@ -31,10 +31,11 @@ class CommentService {
     }
   }
 
-  async editComment(data) {
+  async editComment(comment) {
     try {
-      const res = await api.post('api/comments/', data)
-      AppState.comments = res.data
+      await api.put('api/comments/' + comment._id, comment)
+      const index = AppState.comments.findIndex(c => c._id === comment._id)
+      AppState.comments.splice(index, 1, comment)
     } catch (error) {
       logger.error('Create Failed' + error)
     }

@@ -30,7 +30,7 @@ class CommentsService {
     }
   }
 
-  async deleteComment(commentId) {
+  async deleteCommentById(commentId) {
     try {
       return await dbContext.Comment.findByIdAndRemove(commentId)
     } catch (error) {

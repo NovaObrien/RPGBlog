@@ -11,11 +11,11 @@
       <!-- DropDown -->
 
       <div class="comment-options row">
-        <button class="btn btn-dark text-danger ml-1 mb-1" @click="state.dropOpen = !state.dropOpen">
+        <button class="btn btn-dark text-danger ml-3 mb-1" @click="state.dropOpen = !state.dropOpen">
           <i class="fas fa-angle-double-right"></i>
         </button>
         <div
-          class="dropdown p-0"
+          class="dropdown p-0 ml-3"
           :class="{ show: state.dropOpen }"
         >
           <!-- <button @click="removeUser">
@@ -42,6 +42,7 @@
             <i class="fas fa-angle-double-left"></i>
           </button>
         </div>
+
         <!-- editModal -->
         <div
           class="modal fade"
@@ -68,15 +69,6 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name=""
-                    id=""
-                    aria-describedby="editedTitle"
-                    placeholder="Title..."
-                    v-model="state.editedComment.title"
-                  />
                   <textarea
                     class="form-control rounded-0 mt-3"
                     rows="15"

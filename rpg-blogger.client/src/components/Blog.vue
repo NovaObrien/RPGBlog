@@ -1,10 +1,8 @@
 <template>
   <div class="Blog row p-1 bg-light my-3 rounded">
     <div class="col">
-      <div class="row">
-      </div>
-      <div class="row">
-        <h5 @click="setActiveBlog">
+      <div class="row" @click="setActiveBlog">
+        <h5 class="font ml-1">
           {{ blog.title }}
         </h5>
       </div>
@@ -181,15 +179,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @media (min-width: 575.98px){
-// .info-card{
-//   width: 45%;
-//   height: fit-content;
-//   position:absolute;
-//   top: 15%;
-//   right: 5%;
-// }
-// }
+.font{
+  font-family: 'DotGothic16', sans-serif;
+}
+.font:hover{
+  color: rgb(136, 43, 43);
+  cursor: pointer;
+}
 .bg-gray{
   background-color: rgb(214, 214, 214);
 }
