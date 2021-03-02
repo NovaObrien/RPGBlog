@@ -1,11 +1,11 @@
 <template>
   <div class="home-page container-fluid">
     <div class="row">
-      <div class="col"></div>
+      <div class="col-1"></div>
       <div class="col-10 overflow-auto" id="blogs">
         <Blog v-for="blog in blogs" :blog-props="blog" :key="blog.id" />
       </div>
-      <div class="col sides"></div>
+      <div class="col-1 sides"></div>
     </div>
   </div>
 </template>
