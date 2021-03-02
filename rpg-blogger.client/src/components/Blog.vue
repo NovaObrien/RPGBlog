@@ -2,7 +2,7 @@
   <div class="Blog row p-1 bg-light my-3 rounded">
     <div class="col">
       <div class="row" @click="setActiveBlog">
-        <h5 class="font ml-1">
+        <h5 class="font pb-4 ml-1">
           {{ blog.title }}
         </h5>
       </div>
