@@ -1,0 +1,14 @@
+{
+  "name": "rpg-blogger",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run setup:client && npm run setup:server && npm run build:client",
+    "setup:client": "cd rpg-blogger.client && npm i",
+    "setup:server": "cd rpg-blogger.server && npm i",
+    "build:client": "npm run --prefix rpg-blogger.client build",
+    "start": "node rpg-blogger.server/index.js"
+  },
+  "engines": {
+    "node": "^14.15.4"
+  }
+}
